@@ -1,5 +1,6 @@
 # Superstore Sales & Profitability Analysis
 ![Dashboard Screenshot](dashboard_screenshot.png)
+
 End-to-end data analyst capstone project: cleaning, exploring, and analyzing the
 Superstore retail dataset (9,994 orders, 2014–2017) using Excel, SQL, and Power BI,
 to identify why strong sales weren't translating into proportional profit.
@@ -32,6 +33,9 @@ superstore-capstone/
    band to isolate the root cause of losses (see `sql/analysis_queries.sql`).
 4. **Power BI dashboard:** Built an interactive dashboard with KPIs, regional
    sales, sub-category profitability, and sales trend/seasonality visuals.
+   
+   ## Excel PivotTable Analysis
+![PivotTables: Sales by Region and Profit by Sub-Category](pivot_tables_combined.png)
 
 ## Key Findings
 
