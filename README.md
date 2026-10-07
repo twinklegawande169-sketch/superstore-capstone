@@ -1,75 +1,33 @@
 # Superstore Sales & Profitability Analysis
 ![Dashboard Screenshot](dashboard_screenshot.png)
 
-End-to-end data analyst capstone project: cleaning, exploring, and analyzing the
-Superstore retail dataset (9,994 orders, 2014–2017) using Excel, SQL, and Power BI,
-to identify why strong sales weren't translating into proportional profit.
+## Business question
+Where does Superstore make and lose money, and does the discount level explain the losses?
 
-## Repo structure
+## Key findings
+- **Sales grew 51% from 2014 to 2017** ($484K to $733K), with a small dip in 2015.
+- **Discounts above 20% wipe out profit:** the 21-40% band lost $35,817 and the 40%+ band lost $99,559.
+- **Tables, Bookcases and Supplies lose money overall.**
+- **West earns the best margin (14.9%) and Central the lowest (7.9%).**
+- **Sales are seasonal:** November, December and September are the strongest months, and Q4 brings in about 38% of sales.
+- **Recommendation:** cap discounts at 20%. This shows correlation, not proof of cause.
 
-```
-superstore-capstone/
-├── README.md                  <- this file
-├── data/
-│   ├── raw/                   <- original, unmodified source file
-│   └── cleaned/                <- cleaned dataset (.xlsx and .csv)
-├── sql/
-│   ├── superstore_import.sql  <- creates the `orders` table and loads all rows
-│   └── analysis_queries.sql   <- the analysis queries used for key findings
-├── excel/                     <- add your PivotTable workbook here
-└── powerbi/                   <- add your .pbix file (and/or dashboard screenshot) here
-```
+## Data
+Sample Superstore, 2014-2017: 9,994 order lines and 5,009 orders. Total profit $286,397.02 (reconciled in Excel, MySQL and Power BI).
 
-## Process
+**Cleaning:** some dates were read with month and day swapped (5,201 rows affected). They were fixed and checked: every shipping time is now 0 to 7 days. Postal codes were restored to 5 digits, odd spaces were removed, and analysis columns were added.
 
-1. **Data cleaning (Python/Excel):** Identified and resolved a date-parsing
-   inconsistency affecting 1,708 rows (17% of the dataset) where Ship Date appeared
-   before Order Date due to inconsistent date formatting in the source file.
-   Standardized column names and added derived fields (`Shipping_Days`,
-   `Profit_Margin`, `Order_Year`, `Order_Month`).
-2. **Excel exploration:** Built PivotTables for Sales by Region and Profit by
-   Category/Sub-Category to establish baseline patterns.
-3. **SQL analysis (MySQL):** Queried profitability by sub-category and discount
-   band to isolate the root cause of losses (see `sql/analysis_queries.sql`).
-4. **Power BI dashboard:** Built an interactive dashboard with KPIs, regional
-   sales, sub-category profitability, and sales trend/seasonality visuals.
-   
-   ## Excel PivotTable Analysis
-![PivotTables: Sales by Region and Profit by Sub-Category](pivot_tables_combined.png)
+## Tools
+Excel (cleaning and PivotTables), MySQL (queries), Power BI (dashboard).
 
-## Key Findings
+## Folder guide
+- `data/`: cleaned dataset (`superstore_for_mysql.csv`)
+- `sql/`: `superstore_import.sql` (creates and loads the table) and `analysis_queries.sql` (analysis, JOIN, outlier check)
+- `excel/`: PivotTable dashboard
+- `powerbi/`: Power BI dashboard (.pbix)
+- `report/`: written report (PDF and Word)
 
-1. **Three sub-categories are unprofitable overall:** Tables (-$17,725), Bookcases
-   (-$3,473), and Supplies (-$1,189) — despite Furniture and Office Supplies being
-   large, high-revenue categories.
-2. **Root cause identified via SQL:** Tables are profitable at 0% discount
-   (+$13,276), but flip to a steep loss once *any* discount is applied. The
-   21–40% discount band alone accounts for -$19,590 in losses — the single
-   largest driver of Tables' unprofitability.
-3. **Regional performance:** West and East regions lead in total sales, with
-   South consistently the smallest contributor.
-4. **Seasonality:** Sales show a repeating monthly pattern with predictable
-   spikes (e.g., September, November), alongside steady year-over-year growth.
-
-## Recommendations
-
-- **Cap or eliminate discounts on Tables**, particularly above 20% — this could
-  recover an estimated $30,000+ in profit based on current loss patterns.
-- **Review pricing/cost structure for Bookcases and Supplies**, which show
-  similar (smaller-scale) discount sensitivity.
-- **Plan inventory and staffing around identified seasonal peaks** rather than
-  treating demand as flat.
-
-## How to reproduce
-
-1. Import `data/cleaned/superstore_cleaned.csv` into Excel for PivotTable
-   exploration.
-2. In MySQL, run `sql/superstore_import.sql` to create and populate the
-   `orders` table, then run `sql/analysis_queries.sql` for the analysis.
-3. In Power BI Desktop, connect to `data/cleaned/superstore_cleaned.xlsx`
-   (or the MySQL `orders` table) and rebuild the dashboard visuals described
-   above.
-
-## Tools used
-Python (pandas, for cleaning) · Microsoft Excel (PivotTables) · MySQL Workbench
-(SQL analysis) · Power BI Desktop (dashboard)
+## How to run
+1. Run `sql/superstore_import.sql`. Edit the file path in the `LOAD DATA` line first.
+2. Run `sql/analysis_queries.sql`.
+3. Open the `.pbix` file in Power BI Desktop.
