@@ -1,6 +1,10 @@
 # Superstore Sales & Profitability Analysis
 ![Dashboard Screenshot](dashboard_screenshot.png)
 
+**Interactive dashboard: the Region slicer filtered to Central** (cards, charts and region bar update with the filter)
+
+![Dashboard filtered to Region = Central](dashboard_slicer_central.png)
+
 ## Business question
 Where does Superstore make and lose money, and does the discount level explain the losses?
 
