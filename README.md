@@ -27,9 +27,12 @@ Excel (cleaning and PivotTables), MySQL (queries), Power BI (dashboard).
 ## Folder guide
 - `data/`: cleaned dataset (`superstore_for_mysql.csv`)
 - `sql/`: `superstore_import.sql` (creates and loads the table) and `analysis_queries.sql` (analysis, JOIN, outlier check)
+- **Note:** `regional_managers` is a small reference table created to demonstrate a SQL JOIN. The manager names are placeholders.
 - `excel/`: PivotTable dashboard
 - `powerbi/`: Power BI dashboard (.pbix)
 - `report/`: written report (PDF and Word)
+- 
+- - Screenshots in the repo root: `dashboard_screenshot.png` (full dashboard), `dashboard_slicer_central.png` (slicer filtered to Central), `pivot_tables_combined.png` (Excel PivotTables)
 
 ## How to run
 1. Run `sql/superstore_import.sql`. Edit the file path in the `LOAD DATA` line first.
