@@ -39,7 +39,8 @@ ORDER BY Order_Year, Order_Month;
 
 -- 5. JOIN: which regional manager's region earns the most profit, and at what margin?
 -- (regional_managers is a small reference table created to demonstrate a JOIN)
-CREATE TABLE IF NOT EXISTS regional_managers (
+DROP TABLE IF EXISTS regional_managers;
+CREATE TABLE regional_managers (
     Region VARCHAR(20),
     Manager VARCHAR(50)
 );
