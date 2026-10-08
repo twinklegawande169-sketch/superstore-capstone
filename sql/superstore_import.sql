@@ -1,7 +1,6 @@
 -- Superstore Capstone: Import script
 -- Creates the orders table and loads the cleaned data (dates fixed).
--- Before running: edit the file path in the LOAD DATA line to where
--- superstore_for_mysql.csv is saved on your computer (use forward slashes).
+-- -- Before running: edit the file path in the LOAD DATA line (use forward slashes).
 -- LOAD DATA LOCAL needs local_infile enabled: SET GLOBAL local_infile = 1;
 
 CREATE DATABASE IF NOT EXISTS superstore;
